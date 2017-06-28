@@ -41,7 +41,7 @@ public class RemoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("OK");
+//		System.out.println("OK");
 
 		
 		Integer id = Integer.parseInt(request.getParameter("eventId")); // 削除するレコードのID
