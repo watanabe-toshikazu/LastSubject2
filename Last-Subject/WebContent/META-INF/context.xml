@@ -1,0 +1,9 @@
+<Context>
+	<Resource name="ds/last_subject" auth="Container"
+	          type="javax.sql.DataSource"
+	          driverClassName="com.mysql.jdbc.Driver"
+	          url="jdbc:mysql://13.59.70.152/last_subject"
+	          username="root"
+	          password="mariadb"
+	/>
+</Context>
