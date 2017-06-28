@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <sql:query var="SCHEDULE" dataSource="ds/last_subject">
-SELECT * FROM SCHEDULE
+SELECT title, starttime, endtime, memo FROM SCHEDULE
 </sql:query>
 
 <html>
@@ -21,7 +21,7 @@ SELECT * FROM SCHEDULE
 	
 </head>
 <body>
-   
+	
     　　　　　　　<br><p class="square_btn"><a href="new">New</a></p>
           <div id="myCalendar"></div>
 
@@ -55,13 +55,16 @@ SELECT * FROM SCHEDULE
                   var eventId = event.target.getAttribute('eventId');
                   $('#myCalendar').fullCalendar("removeEvents", eventId);
                   $.ajax({
-                      url: 'http://13.59.70.152/Last-Subject/schedule/remove.do',
+                      url: 'http://localhost:8080/Last-Subject/RemoveServlet',
                       type: 'POST',
                       dataType: 'json',
                       data : {'eventId': eventId},
                       timeout: 10000,
                   }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
                       alert("error");
+                      alert("XMLHttpRequest : " + XMLHttpRequest.status);
+                      alert("textStatus     : " + textStatus);
+                      alert("errorThrown    : " + errorThrown.message);
                   })
               });
         	
@@ -139,7 +142,7 @@ SELECT * FROM SCHEDULE
                 	  description:"${SCHEDULE.memo}",
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}'
-                   }
+                   },
                    </c:forEach>
                 ]
             });
