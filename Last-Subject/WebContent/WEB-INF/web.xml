@@ -17,6 +17,10 @@
     <param-name>/RemoveServlet</param-name>
     <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.RemoveServlet</param-value>
   </context-param>
+    <context-param>
+    <param-name>/UpdateServlet</param-name>
+    <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.UpdateServlet</param-value>
+  </context-param>
   <servlet>
     <servlet-name>Login</servlet-name>
     <jsp-file>/login.jsp</jsp-file>
