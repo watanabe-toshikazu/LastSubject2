@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <sql:query var="SCHEDULE" dataSource="ds/last_subject">
-SELECT title, starttime, endtime, memo FROM SCHEDULE
+SELECT id, title, starttime, endtime, memo FROM SCHEDULE
 </sql:query>
 
 <html>
@@ -138,6 +138,7 @@ SELECT title, starttime, endtime, memo FROM SCHEDULE
                 [
                    <c:forEach var="SCHEDULE" items="${SCHEDULE.rows}">
                    {
+                	  id:'${SCHEDULE.id}'
                 	  title: '${SCHEDULE.title}',
                 	  description:"${SCHEDULE.memo}",
 			    	  start: '${SCHEDULE.starttime}',
