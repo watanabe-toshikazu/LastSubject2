@@ -36,10 +36,11 @@ Integer id = Integer.parseInt(request.getParameter("id")); // 削除するレコ
 		try {
 			ScheduleDao Schedao= new ScheduleDao();
 
-System.out.println("OK");
+
 			
 			// リクエスト・パラメータの値を使用してエンティティ・オブジェクトのフィールド値を設定
 			ControllerUtils.populateEntity(request, Schedao.findById(id));
+
 			new BaseDao().update(Schedule.class);
 			
 		} catch (DaoException e) {

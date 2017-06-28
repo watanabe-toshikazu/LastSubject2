@@ -66,6 +66,7 @@ public class BaseDao {
 	public void update(Object entity) throws DaoException {
 		try {
 			tx.begin();
+			//ここ↓
 			em.merge(entity);
 			tx.commit();
 		} catch (Exception e) {
