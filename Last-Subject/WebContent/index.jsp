@@ -21,7 +21,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
 	
 </head>
 <body>
-    　　　　<br><p class="new_btn"><a href="new">NewSchedule</a></p>
+    　　　　<br><p class="new_btn"><a href="new">新規作成</a></p>
           <div id="myCalendar"></div>
 
     <div id="fullCalModal" class="modal fade">
@@ -75,6 +75,8 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                       timeout: 10000,
                   }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
                       console.log(XMLHttpRequest)
+                      console.log(textStatus)
+                      console.log(errorThrown)
                   })
               });
         	
@@ -153,7 +155,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 	  title: '${SCHEDULE.title}',
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}',
-			    	  description:"${SCHEDULE.memo}",
+			    	  description:"<p>--------------------------------------------------------------------</p><p>メモ：${SCHEDULE.memo}</p><p>--------------------------------------------------------------------</p><form><p><label for=name>変更</label></p><p>イベント名</p><p><input type=text name=title value=${title} ></p><p>開始日時 </p><p><input type=datetime-local name=starttime value=${strattime} ></p><p>終了日時</p><p><input type=datetime-local name=endtime value=${endtime} ></p><p>メモ </p><p><textarea name=memo value=${memo} rows=4 cols=40></textarea></p></from>",
                    },
                    </c:forEach>
                 ]
@@ -161,4 +163,5 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
         });
     </script>
 </body>
+	<jsp:include page="page-footer.jsp"></jsp:include>
 </html>

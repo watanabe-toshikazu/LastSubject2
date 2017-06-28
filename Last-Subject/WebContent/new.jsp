@@ -35,4 +35,5 @@
         </div>
     
      </body>
+   <jsp:include page="page-footer.jsp"></jsp:include>
 </html>

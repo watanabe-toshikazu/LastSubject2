@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 body {
 	background: linear-gradient(#333, #000);
-	margin: 40px 10px;
+	margin: 60px 10px;
 	padding: 0;
 	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	font-size: 14px;
@@ -12,7 +12,7 @@ body {
 #myCalendar {
     max-width: 900px;
     margin: 0 auto;
-    color: #00ff00;
+    color: #cccccc;
 }
 .fc-sun {
     color: #FF0000;
@@ -22,14 +22,27 @@ body {
 	color: #0080ff;
 }
 
+.fc-mon,.fc-tue,.fc-wed,.fc-thu,.fc-fri {
+	color: #00ff00;
+}
+
+footer {
+	text-align: center;
+	font-size: 12px;
+	background: #D3D3D3;
+	color: #8B0000;
+	margin-top: 100px;
+}
+
 .demo {
   width: 500px;
   margin: 0 auto;
   padding: 10px 0;
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   color:#3cb3e4;
 }
+
 .heading {
   margin: 10px 0
 }
@@ -38,28 +51,29 @@ body {
   border-bottom: 3px solid #3cb3e4;
   padding: 10px 30px;
   position: relative;
-  width: 400px;
+  width: 500px;
   text-align: center;
   margin: 40px auto;
   color: #3cb3e4;
   font-weight: bold;
 }
-.demo9 .heading:before {
-  content: "";
-  border-left: 3px solid #3cb3e4;
-  border-right: 3px solid #3cb3e4;
-  display: block;
-  position: absolute;
-  width: calc(100% - 20px);
-  height: 58px;
-  top: -8px;
-  left: 8px;
+
+.demo9 .heading{
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0px 1px 10px #488a9e;
+  -moz-box-shadow: 0px 1px 10px #488a9e;
+  box-shadow: 0px 1px 10px #488a9e;
+  border: solid #4eb4c2 1px;
+  background: #fafafa;
 }
 
+
 #form{
-    width: 400px;
-    margin: 30px auto;
-    padding: 20px;
+    width: 500px;
+    margin: 40px auto;
+    padding: 40px;
     border: 1px solid #555;
     }
 
@@ -72,7 +86,7 @@ form p{
     }
 
 .mail,.pass{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     }
 
 input[type="email"],
@@ -80,9 +94,11 @@ input[type="password"] {
     width: 300px;
     padding: 4px;
     font-size: 14px;
+    margin: 5px
     }
     
 .submit{
+	margin: 10px;
     text-align: right;
     }
     
@@ -274,7 +290,7 @@ a { text-decoration: none; }
     color: #00BCD4;
     background: #ECECEC;
     transition: .4s;
-    margin-left:1070px;
+    margin-left:1100px;
 }
 
 .new_btn:hover {
