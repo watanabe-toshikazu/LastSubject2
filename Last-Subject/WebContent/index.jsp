@@ -38,6 +38,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 <div id="modalBody" class="modal-body"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a class="btn btn-success" id="eventUrl" target="_blank">Edit</a>
                     <button type="button" id="delete" class="btn btn-danger" data-dismiss="modal">Delete</button>
                     
                     <!--  
@@ -139,8 +140,9 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 	  id: '${SCHEDULE.id}',
                 	  title: '${SCHEDULE.title}',
 			    	  start: '${SCHEDULE.starttime}',
-			    	  end: '${SCHEDULE.endtime}'
+			    	  end: '${SCHEDULE.endtime}',
 			    	  description:"${SCHEDULE.memo}",
+			    	  "url":"http://localhost:8080/Last-Subject/edit.jsp"
                    },
                    </c:forEach>
                 ]

@@ -3,19 +3,18 @@
 <!DOCTYPE html>
 <html>
 	<jsp:include page="html-header.jsp">
-		<jsp:param name="title" value="New" />
+		<jsp:param name="title" value="Edit" />
 	</jsp:include>
      <head>
           <meta charset=UTF-8>
-          <jsp:include page="page-header.jsp"></jsp:include>
+           <jsp:include page="page-header.jsp"></jsp:include>
      </head>
      <body>
-    
-     	<p class="square_btn"><a href="./">Back</a></p>
+     <p class="square_btn"><a href="./">Back</a></p>
      	 <div id="new" >
-     	 <p class='form-title'>新規作成</p>
+     	 <p class='form-title'>編集画面</p>
      	 
-         <form action="schedule/insert.do" method="get">
+         <form action="UpdateServlet" method="get">
 
            <p><label for="name">タイトル名 </label></p>
            <p class="title"><input type="text" name="title" value="${title}" required></p>
@@ -33,6 +32,5 @@
            <p class="new_submit"><input type="submit" name="確認" value="登録" required></p>
         </form>
         </div>
-    
      </body>
 </html>
