@@ -9,16 +9,14 @@
     <param-name>/logout.do</param-name>
     <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.LogoutAction</param-value>
   </context-param>
-   <context-param>
+  <context-param>
     <param-name>/schedule/insert.do</param-name>
     <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.InsertAction</param-value>
   </context-param>
   <context-param>
-    <param-name>/schedule/remove.do</param-name>
+    <param-name>/RemoveServlet</param-name>
     <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.RemoveAction</param-value>
   </context-param>
-  
-  
   <servlet>
     <servlet-name>Login</servlet-name>
     <jsp-file>/login.jsp</jsp-file>
@@ -35,14 +33,11 @@
     <servlet-name>ScheduleNew</servlet-name>
     <url-pattern>/new</url-pattern>
   </servlet-mapping>
-  
- 
-   <resource-ref>
-  	<res-ref-name>ds/last_subject</res-ref-name>
-  	<res-type>javax.sql.DataSource</res-type>
-  	<res-auth>Container</res-auth>
+  <resource-ref>
+    <res-ref-name>ds/last_subject</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
   </resource-ref>
- 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

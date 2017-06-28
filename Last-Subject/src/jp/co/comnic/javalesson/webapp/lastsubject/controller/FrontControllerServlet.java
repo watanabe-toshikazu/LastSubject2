@@ -28,7 +28,7 @@ public class FrontControllerServlet extends HttpServlet {
 	 */
 	protected void doService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-		System.out.println(request.getParameter("starttime"));
+
 		// リクエストURLから適切なActionオブジェクト(ビジネス・ロジックの実行をカプセル化するオブジェクト)を取得
 		Action action = ActionFactory.getAction(request.getServletPath());
 		// Actionを実行して、転送先Viewのパスを取得
