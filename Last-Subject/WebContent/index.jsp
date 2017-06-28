@@ -38,7 +38,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 <div id="modalBody" class="modal-body"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a class="btn btn-success" id="eventUrl" target="_blank">Edit</a>
+                    <button type="button" id="edit" class="btn btn-success" data-dismiss="modal">Edit</button>
                     <button type="button" id="delete" class="btn btn-danger" data-dismiss="modal">Delete</button>
                     
                     <!--  
@@ -57,6 +57,20 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                   $('#myCalendar').fullCalendar("removeEvents", eventId);
                   $.ajax({
                       url: 'http://localhost:8080/Last-Subject/RemoveServlet',
+                      type: 'POST',
+                      dataType: 'json',
+                      data : {'eventId': eventId},
+                      timeout: 10000,
+                  }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+                      console.log(XMLHttpRequest)
+                  })
+              });
+        	  
+        	  $('#edit').on('click', function(event) {
+                  var eventId = event.target.getAttribute('eventId');
+                  $('#myCalendar').fullCalendar("removeEvents", eventId);
+                  $.ajax({
+                      url: 'http://localhost:8080/Last-Subject/UpdateServlet',
                       type: 'POST',
                       dataType: 'json',
                       data : {'eventId': eventId},
@@ -142,7 +156,6 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}',
 			    	  description:"${SCHEDULE.memo}",
-			    	  "url":"http://localhost:8080/Last-Subject/edit.jsp"
                    },
                    </c:forEach>
                 ]
