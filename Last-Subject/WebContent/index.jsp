@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <sql:query var="SCHEDULE" dataSource="ds/last_subject">
-SELECT id, title, starttime, endtime, memo FROM SCHEDULE
+SELECT id,title, starttime, endtime, memo FROM SCHEDULE
 </sql:query>
 
 <html>
@@ -61,10 +61,7 @@ SELECT id, title, starttime, endtime, memo FROM SCHEDULE
                       data : {'eventId': eventId},
                       timeout: 10000,
                   }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-                      alert("error");
-                      alert("XMLHttpRequest : " + XMLHttpRequest.status);
-                      alert("textStatus     : " + textStatus);
-                      alert("errorThrown    : " + errorThrown.message);
+                      console.log(XMLHttpRequest)
                   })
               });
         	
@@ -126,6 +123,7 @@ SELECT id, title, starttime, endtime, memo FROM SCHEDULE
      			
      			//イベントクリックしたとき
                 eventClick:  function(event, jsEvent, view) {
+                	$('#delete').attr('eventId',event.id);
                     $('#modalTitle').html(event.title);
                     $('#modalBody').html(event.description);
                     $('#eventUrl').attr('href',event.url);
@@ -138,11 +136,11 @@ SELECT id, title, starttime, endtime, memo FROM SCHEDULE
                 [
                    <c:forEach var="SCHEDULE" items="${SCHEDULE.rows}">
                    {
-                	  id:'${SCHEDULE.id}'
+                	  id: '${SCHEDULE.id}',
                 	  title: '${SCHEDULE.title}',
-                	  description:"${SCHEDULE.memo}",
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}'
+			    	  description:"${SCHEDULE.memo}",
                    },
                    </c:forEach>
                 ]

@@ -15,7 +15,7 @@
   </context-param>
   <context-param>
     <param-name>/RemoveServlet</param-name>
-    <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.RemoveAction</param-value>
+    <param-value>jp.co.comnic.javalesson.webapp.lastsubject.controller.RemoveServlet</param-value>
   </context-param>
   <servlet>
     <servlet-name>Login</servlet-name>
