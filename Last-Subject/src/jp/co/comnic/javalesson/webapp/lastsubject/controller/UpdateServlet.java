@@ -31,12 +31,12 @@ public class UpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Integer id = Integer.parseInt(request.getParameter("eventId")); // 削除するレコードのID
+Integer id = Integer.parseInt(request.getParameter("id")); // 削除するレコードのID
 		
 		try {
 			ScheduleDao Schedao= new ScheduleDao();
 
-
+System.out.println("OK");
 			
 			// リクエスト・パラメータの値を使用してエンティティ・オブジェクトのフィールド値を設定
 			ControllerUtils.populateEntity(request, Schedao.findById(id));
