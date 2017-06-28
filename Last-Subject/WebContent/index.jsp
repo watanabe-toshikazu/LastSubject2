@@ -66,7 +66,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
         	  
         	  $('#edit').on('click', function(event) {
                   var eventId = event.target.getAttribute('eventId');
-                  $('#myCalendar').fullCalendar("removeEvents", eventId);
+                  $('#myCalendar').fullCalendar("updateEvent", eventId);
                   $.ajax({
                       url: 'http://localhost:8080/Last-Subject/UpdateServlet',
                       type: 'POST',
@@ -74,9 +74,9 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                       data : {'eventId': eventId},
                       timeout: 10000,
                   }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-                      console.log(XMLHttpRequest)
-                      console.log(textStatus)
-                      console.log(errorThrown)
+                	  alert("XMLHttpRequest : " + XMLHttpRequest.status)
+                      alert("textStatus     : " + textStatus)
+                      alert("errorThrown    : " + errorThrown.message)
                   })
               });
         	

@@ -31,17 +31,22 @@ public class UpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Integer id = Integer.parseInt(request.getParameter("id")); // 削除するレコードのID
+		
+		System.out.println("OK");
+		
+		Integer id = Integer.parseInt(request.getParameter("eventId")); // 更新するレコードのID
+		
+		System.out.println(id);
 		
 		try {
 			ScheduleDao Schedao= new ScheduleDao();
 
-
-			
 			// リクエスト・パラメータの値を使用してエンティティ・オブジェクトのフィールド値を設定
 			ControllerUtils.populateEntity(request, Schedao.findById(id));
 
 			new BaseDao().update(Schedule.class);
+			
+//			Schedao.update(Schedule.class);
 			
 		} catch (DaoException e) {
 			request.setAttribute("error", "[ERROR]: " + 
@@ -54,6 +59,8 @@ Integer id = Integer.parseInt(request.getParameter("id")); // 削除するレコ
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
 }
