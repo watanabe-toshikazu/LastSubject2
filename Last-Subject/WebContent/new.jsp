@@ -29,8 +29,8 @@
            <p><label for="text">メモ </label></p>
            <p class="title"><textarea name="memo"　value="${memo}" rows="4" cols="40"></textarea></p>
            
-           <p class="new_reset"><input type="reset" value="Reset"></p>
-           <p class="new_submit"><input type="submit" name="確認" value="登録" required></p>
+           <p class="new_reset"><input type="reset" value="リセット"></p>
+           <p class="new_submit"><input type="submit" value="登録" ></p>
         </form>
         </div>
     

@@ -21,10 +21,8 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
 	
 </head>
 <body>
-	
-    　　　　　　　<br><p class="square_btn"><a href="new">New</a></p>
+    　　　　<br><p class="new_btn"><a href="new">NewSchedule</a></p>
           <div id="myCalendar"></div>
-
 
     <div id="fullCalModal" class="modal fade">
         <div class="modal-dialog">

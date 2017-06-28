@@ -4,6 +4,15 @@
 <div class="demo demo9">
   <div class="heading"><span>NabeSchedule</span></div>
 </div>
-<div class="login-user">Hello！</div> 
-<div class="username">${loginUsername} さん</div>
-<p class="logout_btn"><a href="${ctxPath}logout.do"> Logout</a></p>
+
+   <div class="clearfix box_wrap">
+	<div class="login-user">
+		Hello！
+	</div> 
+	<div class="username">
+		${loginUsername} さん
+	</div>
+	<div class="logout_btn">
+		<a href="${ctxPath}logout.do"> Logout</a>
+	</div>
+   </div>
