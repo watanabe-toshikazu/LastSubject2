@@ -1,6 +1,7 @@
 package jp.co.comnic.javalesson.webapp.lastsubject.controller;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.apache.commons.beanutils.converters.DateConverter;
 import jp.co.comnic.javalesson.webapp.lastsubject.dao.DaoException;
 import jp.co.comnic.javalesson.webapp.lastsubject.dao.ScheduleDao;
 import jp.co.comnic.javalesson.webapp.lastsubject.model.Schedule;
+
 
 
 
@@ -64,10 +66,10 @@ public class ControllerUtils {
 
 			// 日付形式への対応
 			DateConverter dateConverter = new DateConverter();
-			dateConverter.setPattern("yyyy-MM-dd HH:mm");
+			dateConverter.setPattern("yyyy-MM-dd'T'HH:mm");
 			
 			// コンバーターの登録
-			ConvertUtils.register(dateConverter, java.util.Date.class);
+			ConvertUtils.register(dateConverter,  Date.class);
 			ConvertUtils.register(new ScheduleConverter(), Schedule.class);
 			
 			// Apache Commons ProjectのBeanUtilsを使用して
