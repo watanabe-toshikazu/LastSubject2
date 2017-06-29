@@ -36,15 +36,16 @@ public class UpdateServlet extends HttpServlet {
 		
 		Integer id = Integer.parseInt(request.getParameter("eventId")); // 更新するレコードのID
 		
-		System.out.println(id);
+		System.out.println(request.getParameter("eventId"));
 		
 		try {
 			ScheduleDao Schedao= new ScheduleDao();
-
+			Object entity=Schedao.findById(id);
+			
 			// リクエスト・パラメータの値を使用してエンティティ・オブジェクトのフィールド値を設定
-			ControllerUtils.populateEntity(request, Schedao.findById(id));
+			ControllerUtils.populateEntity(request, entity);
 
-			new BaseDao().update(Schedule.class);
+			new BaseDao().update(entity);
 			
 //			Schedao.update(Schedule.class);
 			
