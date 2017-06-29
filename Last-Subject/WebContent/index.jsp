@@ -119,7 +119,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
      			
      			//イベントクリックしたとき
                 eventClick:  function(event, jsEvent, view) {
-                	console.log(event);
+
                 	calendarEvent = event;
                 	$('#delete').attr('eventId',event.id);
                 	
@@ -164,13 +164,14 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
             });
       	  	  
       	  $('#edit').on('click', function(event) {
-      		  	console.log($('#modalStarttime').val())
+      			console.log(calendarEvent.start);
+      		  	console.log(calendarEvent.end);
       		  	calendarEvent.title = $('#modalTitle').val();
-      			calendarEvent.start = moment($('#modalStarttime').val()).format('YYYY-MM-DD HH:mm:ss');
-      			calendarEvent.end = moment($('#modalEndtime').val()).format('YYYY-MM-DD HH:mm:ss');
+      			calendarEvent.start = moment($('#modalStarttime').val()).format('YYYY-MM-DD HH:mm:ss:s');
+      			calendarEvent.end = moment($('#modalEndtime').val()).format('YYYY-MM-DD HH:mm:ss:s');
       			calendarEvent.memo = $('#modalMemo').val();
                 $('#myCalendar').fullCalendar("updateEvent", calendarEvent);
-                console.log(calendarEvent.start);
+       
                 $.ajax({
                     url: 'http://localhost:8080/Last-Subject/UpdateServlet',
                     type: 'POST',
