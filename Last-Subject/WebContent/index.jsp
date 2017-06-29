@@ -124,8 +124,8 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 	$('#delete').attr('eventId',event.id);
                 	
                     $('#modalTitle').html(event.title);
-                    $('#modalStarttime').html(event.start);
-                    $('#modalEndtime').html(event.end);
+                    $('#modalStarttime').html(event.starttime);
+                    $('#modalEndtime').html(event.endtime);
                     $('#modalMemo').html(event.memo);
                     
                     $('#modalBody').html(event.description);
@@ -164,10 +164,10 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
             });
       	  	  
       	  $('#edit').on('click', function(event) {
-      		  	console.log()
+      		  	console.log($('#modalStarttime').val())
       		  	calendarEvent.title = $('#modalTitle').val();
-      			calendarEvent.start = $('#modalStarttime').val();
-      			calendarEvent.end = $('#modalEndtime').val();
+      			calendarEvent.start = moment($('#modalStarttime').val()).format('YYYY-MM-DD HH:mm:ss');
+      			calendarEvent.end = moment($('#modalEndtime').val()).format('YYYY-MM-DD HH:mm:ss');
       			calendarEvent.memo = $('#modalMemo').val();
                 $('#myCalendar').fullCalendar("updateEvent", calendarEvent);
                 console.log(calendarEvent.start);
@@ -175,7 +175,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                     url: 'http://localhost:8080/Last-Subject/UpdateServlet',
                     type: 'POST',
                     dataType: 'json',
-                    data : {'eventId': calendarEvent.id,'title': calendarEvent.title,'starttime': calendarEvent.start._i,'endtime': calendarEvent.end._i,'memo': calendarEvent.memo},
+                    data : {'eventId': calendarEvent.id,'title': calendarEvent.title,'starttime': calendarEvent.start,'endtime': calendarEvent.end,'memo': calendarEvent.memo},
                     timeout: 10000,
                 }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
               	  	alert("XMLHttpRequest : " + XMLHttpRequest.status)

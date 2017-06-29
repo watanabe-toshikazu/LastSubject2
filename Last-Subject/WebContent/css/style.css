@@ -226,7 +226,7 @@ input[type="text"]{
 a { text-decoration: none; }
 
 .box_wrap {
-    width:2000px;
+    width:1300px;
     height:auto;
     
 }
@@ -234,7 +234,7 @@ a { text-decoration: none; }
 .login-user {
 	width:70px;
     height:100px;
-    margin-left:250px;
+    margin-left:180px;
     float:left;
 	font-size: 18px;
 	color: #3db2e4;
@@ -243,7 +243,7 @@ a { text-decoration: none; }
 .username {
 	width:200px;
     height:28px;
-    margin-left:10px;
+    margin-left:20px;
     float:left;
 	font-size: 18px;
 	color: #ffffff;
@@ -264,7 +264,7 @@ a { text-decoration: none; }
     color: #FFF;
     width: 70px;
     height: 70px;
-    margin-left:550px;
+    margin-left:590px;
     float:left;
     line-height: 70px;
     border-radius: 50%;
