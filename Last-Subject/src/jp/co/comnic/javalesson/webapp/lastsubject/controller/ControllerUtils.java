@@ -61,6 +61,7 @@ public class ControllerUtils {
 		for (String key : parameterMap.keySet()) {
 			String value = parameterMap.get(key)[0];
 			if (value.contains(" ")) {
+				
 				value = value.replace(" ", "T");
 				value= value.substring(0, value.length()-5);
 				
