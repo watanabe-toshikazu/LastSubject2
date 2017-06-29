@@ -32,7 +32,13 @@ public class UpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("OK");
+		
+		System.out.println("date:" + request.getParameter("starttime"));
+//		String strstrat= request.getParameter("starttime");
+//		request.getParameterMap().put("starttime", new String[]{strstrat.replace(" ", "'T'")});
+//		
+//		String strend= request.getParameter("endtime");
+//		request.getParameterMap().put("endtime", new String[]{strstrat.replace(" ", "'T'")});
 		
 		Integer id = Integer.parseInt(request.getParameter("eventId")); // 更新するレコードのID
 		
@@ -49,11 +55,12 @@ public class UpdateServlet extends HttpServlet {
 			
 //			Schedao.update(Schedule.class);
 			
-		} catch (DaoException e) {
-			request.setAttribute("error", "[ERROR]: " + 
-                                  ControllerUtils.getShortMessage(e));
+//		} catch (DaoException e) {
+//			request.setAttribute("error", "[ERROR]: " + 
+//                                  ControllerUtils.getShortMessage(e));
 		} catch (Exception e) {
-			throw new ServletException(e);
+			e.printStackTrace();
+//			throw new ServletException(e);
 		}
 	}
 

@@ -31,7 +31,15 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                     <button type="button" class="close" data-dismiss="modal">
                       <span aria-hidden="true">×</span> <span class="sr-only">close</span>
                    </button>
-                    <h4 id="modalTitle" class="modal-title"></h4>
+                 	<p>予定変更</p>
+                 	<p>予定名</p>
+                    <input type="text" id="modalTitle" name="title" class="modal-title" />
+                    <p>開始時間</p>
+                    <input type="datetime-local" id="modalStarttime" name="start" class="modal-start" />
+                    <p>終了時間</p>
+                    <input type="datetime-local" id="modalEndtime" name="end" class="modal-end" />
+                    <p>メモ</p>
+                    <textarea id="modalMemo" name="memo" class="modal-memo" rows="4" cols="40" ></textarea>
                 </div>
                 <div id="modalBody" class="modal-body"></div>
                 <div class="modal-footer">
@@ -50,35 +58,8 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
 
     <script>
         $(document).ready(function() {
-        	  $('#delete').on('click', function(event) {
-                  var eventId = event.target.getAttribute('eventId');
-                  $('#myCalendar').fullCalendar("removeEvents", eventId);
-                  $.ajax({
-                      url: 'http://localhost:8080/Last-Subject/RemoveServlet',
-                      type: 'POST',
-                      dataType: 'json',
-                      data : {'eventId': eventId},
-                      timeout: 10000,
-                  }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-                      console.log(XMLHttpRequest)
-                  })
-              });
-        	  
-        	  $('#edit').on('click', function(event) {
-                  var eventId = event.target.getAttribute('eventId');
-                  $('#myCalendar').fullCalendar("updateEvent", eventId);
-                  $.ajax({
-                      url: 'http://localhost:8080/Last-Subject/UpdateServlet',
-                      type: 'POST',
-                      dataType: 'json',
-                      data : {'eventId': eventId},
-                      timeout: 10000,
-                  }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-                	  alert("XMLHttpRequest : " + XMLHttpRequest.status)
-                      alert("textStatus     : " + textStatus)
-                      alert("errorThrown    : " + errorThrown.message)
-                  })
-              });
+        	
+        	var calenderEvent;
         	
         	$('#myCalendar').fullCalendar({
                 header: {
@@ -138,8 +119,15 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
      			
      			//イベントクリックしたとき
                 eventClick:  function(event, jsEvent, view) {
+                	console.log(event);
+                	calendarEvent = event;
                 	$('#delete').attr('eventId',event.id);
+                	
                     $('#modalTitle').html(event.title);
+                    $('#modalStarttime').html(event.start);
+                    $('#modalEndtime').html(event.end);
+                    $('#modalMemo').html(event.memo);
+                    
                     $('#modalBody').html(event.description);
                     $('#eventUrl').attr('href',event.url);
                     $('#fullCalModal').modal();
@@ -155,10 +143,45 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 	  title: '${SCHEDULE.title}',
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}',
-			    	  description:"<p>--------------------------------------------------------------------</p><p>メモ：${SCHEDULE.memo}</p><p>--------------------------------------------------------------------</p><form><p><label for=name>変更</label></p><p>イベント名</p><p><input type='text' name='title' value='${title}' ></p><p>開始日時 </p><p><input type='datetime-local' name='starttime' value='${strattime}' ></p><p>終了日時</p><p><input type='datetime-local' name='endtime' value='${endtime}' ></p><p>メモ </p><p><textarea name='memo' value='${memo}' rows='4' cols='40'></textarea></p></from>",
+			    	  description:"<p>--------------------------------------------------------------------</p><p>メモ：${SCHEDULE.memo}</p><p>--------------------------------------------------------------------</p>",
                    },
                    </c:forEach>
-                ]
+                ]       
+            });
+        		
+        	$('#delete').on('click', function(event) {
+            	var eventId = event.target.getAttribute('eventId');
+                $('#myCalendar').fullCalendar("removeEvents", eventId);
+                $.ajax({
+                    url: 'http://localhost:8080/Last-Subject/RemoveServlet',
+                    type: 'POST',
+                    dataType: 'json',
+                    data : {'eventId': eventId},
+                    timeout: 10000,
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest)
+                })
+            });
+      	  	  
+      	  $('#edit').on('click', function(event) {
+      		  	console.log()
+      		  	calendarEvent.title = $('#modalTitle').val();
+      			calendarEvent.start = $('#modalStarttime').val();
+      			calendarEvent.end = $('#modalEndtime').val();
+      			calendarEvent.memo = $('#modalMemo').val();
+                $('#myCalendar').fullCalendar("updateEvent", calendarEvent);
+                console.log(calendarEvent.start);
+                $.ajax({
+                    url: 'http://localhost:8080/Last-Subject/UpdateServlet',
+                    type: 'POST',
+                    dataType: 'json',
+                    data : {'eventId': calendarEvent.id,'title': calendarEvent.title,'starttime': calendarEvent.start._i,'endtime': calendarEvent.end._i,'memo': calendarEvent.memo},
+                    timeout: 10000,
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+              	  	alert("XMLHttpRequest : " + XMLHttpRequest.status)
+                    alert("textStatus     : " + textStatus)
+                    alert("errorThrown    : " + errorThrown.message)
+                })
             });
         });
     </script>

@@ -59,7 +59,12 @@ public class ControllerUtils {
 		// Map<String, String>に変換
 		Map<String, String> propertyMap = new HashMap<>();
 		for (String key : parameterMap.keySet()) {
-			propertyMap.put(key, parameterMap.get(key)[0]);
+			String value = parameterMap.get(key)[0];
+			if (value.contains(" ")) {
+				value = value.replace(" ", "'T'");
+			}
+			System.out.println(value);
+			propertyMap.put(key, value);
 		}
 
 		try {
