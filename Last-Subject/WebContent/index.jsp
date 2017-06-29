@@ -155,7 +155,7 @@ SELECT id,title, starttime, endtime, memo FROM SCHEDULE
                 	  title: '${SCHEDULE.title}',
 			    	  start: '${SCHEDULE.starttime}',
 			    	  end: '${SCHEDULE.endtime}',
-			    	  description:"<p>--------------------------------------------------------------------</p><p>メモ：${SCHEDULE.memo}</p><p>--------------------------------------------------------------------</p><form><p><label for=name>変更</label></p><p>イベント名</p><p><input type=text name=title value=${title} ></p><p>開始日時 </p><p><input type=datetime-local name=starttime value=${strattime} ></p><p>終了日時</p><p><input type=datetime-local name=endtime value=${endtime} ></p><p>メモ </p><p><textarea name=memo value=${memo} rows=4 cols=40></textarea></p></from>",
+			    	  description:"<p>--------------------------------------------------------------------</p><p>メモ：${SCHEDULE.memo}</p><p>--------------------------------------------------------------------</p><form><p><label for=name>変更</label></p><p>イベント名</p><p><input type='text' name='title' value='${title}' ></p><p>開始日時 </p><p><input type='datetime-local' name='starttime' value='${strattime}' ></p><p>終了日時</p><p><input type='datetime-local' name='endtime' value='${endtime}' ></p><p>メモ </p><p><textarea name='memo' value='${memo}' rows='4' cols='40'></textarea></p></from>",
                    },
                    </c:forEach>
                 ]
